@@ -80,9 +80,12 @@ services:
       - 50000:50000/tcp
       - 50000:50000/udp
       - 9600:9600
+      - 5959:5959
+      - 5555:5555
     environment:
       LS_JAVA_OPTS: -Xms256m -Xmx256m
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+#      LS_JAVA_OPTS: -Xms256m -Xmx256m -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=18080 -Dcom.sun.management.jmxremote.rmi.port=18080 -Djava.rmi.server.hostname=10.1.0.199 -Dcom.sun.management.jmxremote.local.only=false
     networks:
       - elk
     depends_on:
