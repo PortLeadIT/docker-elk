@@ -54,6 +54,7 @@ services:
       - 9200:9200
       - 9300:9300
     environment:
+
       node.name: elasticsearch
       ES_JAVA_OPTS: -Xms512m -Xmx512m
       # Bootstrap password.
@@ -63,6 +64,7 @@ services:
       # Use single node discovery in order to disable production mode and avoid bootstrap checks.
       # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
       discovery.type: single-node
+      xpack.security.enabled: false
     networks:
       - elk
     restart: unless-stopped
